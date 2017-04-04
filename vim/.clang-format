@@ -1,0 +1,16 @@
+﻿---
+AlignAfterOpenBracket: Align
+AlignConsecutiveAssignments: 'false'
+BreakBeforeBraces: Allman
+ColumnLimit: 120
+PointerAlignment: Left
+ReflowComments: 'true'
+SortIncludes: 'true'
+SpacesInParentheses: 'false'
+SpacesInSquareBrackets: 'false'
+IndentCaseLabels: 'true'
+Standard: Auto
+TabWidth: '2'
+UseTab: Never
+
+...

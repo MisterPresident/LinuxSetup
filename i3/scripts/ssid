@@ -1,0 +1,10 @@
+#!/bin/bash
+if [[ -n $BLOCK_INSTANCE ]]; then
+  IF=$BLOCK_INSTANCE
+else
+  IF=$(ip route | awk '/^default/ { print $5 ; exit }')
+fi
+
+if [ -n "${IF}" ]; then
+  echo $(iw dev $IF link | grep SSID | cut -d " " -f 2-)
+fi

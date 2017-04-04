@@ -1,0 +1,7 @@
+#!/bin/bash
+
+SONG=$(spotify-now -i "%artist - %title" -p "Paused" -e "Error")
+if [ $? -eq "0" ]
+then
+  echo $SONG
+fi
