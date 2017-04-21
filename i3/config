@@ -9,22 +9,25 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
-set $w1 1: main
-set $w2 2: www
-set $w3 3
-set $w4 4
-set $w5 5
-set $w6 6
-set $w7 7
-set $w8 8: skype
-set $w9 9: email
-set $w10 10: spotify
+set $w1 1 
+set $w2 2  
+set $w3 3 
+set $w4 4 
+set $w5 5 
+set $w6 6 
+set $w7 7 
+set $w8 8 
+set $w9 9 
+set $w10 10 
 
 
 assign [class="Google-chrome"] $w2
+assign [class="qpdfview"] $w5
+assign [class="Spacefm"] $w6
+assign [class="GitKraken"] $w7
+for_window [class="Skype"] move to workspace  $w8
 assign [class="Thunderbird"] $w9
 for_window [class="Spotify"] move to workspace  $w10
-for_window [class="Skype"] move to workspace  $w8
 
 set $mod Mod4
 
@@ -152,10 +155,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym odiaeresis resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -207,7 +210,9 @@ bindsym XF86MonBrightnessDown exec "xbacklight -10"
 bindsym XF86AudioRaiseVolume exec "amixer -M set Master 5%+"
 bindsym XF86AudioLowerVolume exec "amixer -M set Master 5%-"
 bindsym XF86AudioMute exec "/bin/unmute"
+
 exec "feh --bg-scale /home/raabls/Wallpaper/brazil_boottour.jpg"
+
 bindsym Control+Shift+Right exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
 bindsym Control+Shift+Left exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
 bindsym Control+Shift+Up exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
