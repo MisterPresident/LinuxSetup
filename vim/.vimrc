@@ -15,6 +15,14 @@ while c <= 'z'
 endw
 
 set timeout ttimeoutlen=50
+set mouse=a
+set lazyredraw
+set ttyfast
+
+" go between wrapped lines
+nnoremap k gk
+nnoremap j gj
+
 
 noremap <Up> <NOP>
 noremap <Down> <NOP>
@@ -27,7 +35,10 @@ nmap <silent> <A-h> :wincmd h<CR>
 nmap <silent> <A-l> :wincmd l<CR>
 nmap <silent> <C-b> :vsplit <CR>
 let g:autoformat_verbosemode = 1
-map <f12> <C-]> 
+map <f12> <C-]>
+noremap gt :YcmCompleter GoTo<CR>
+noremap gd :YcmCompleter GoToDefinition<CR>
+" noremap <g-r> :YcmCompleter GoToReferences<CR>
 
 map <C-n> :NERDTreeToggle<CR>
 map <F9> :YcmCompleter FixIt<CR>
@@ -49,7 +60,10 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 set laststatus=2
-let g:SuperTabClosePreviewOnPopupClose = 1
+
+set ignorecase
+set smartcase
+
 
 " ---------------------------------- "
 " Configure Ultisnip and YouCompleteMe
@@ -63,11 +77,12 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 " Configure YouCompleteMe
 " ---------------------------------- "
 
-let g:ycm_collect_identifiers_from_tags_files = 1 " Let YCM read tags from Ctags file
+" let g:ycm_collect_identifiers_from_tags_files = 1 " Let YCM read tags from Ctags file
 let g:ycm_use_ultisnips_completer = 1 " Default 1, just ensure
 let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
 let g:ycm_complete_in_comments = 1 " Completion in comments
 let g:ycm_complete_in_strings = 1 " Completion in string
+let g:ycm_collect_identifiers_from_tags_files = 1 
 
 " make YCM compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
@@ -118,6 +133,7 @@ Plugin 'Chiel92/vim-autoformat'
 Plugin 'vim-latex/vim-latex'
 Plugin 'xuhdev/vim-latex-live-preview'
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'vim-scripts/cscope.vim'
 "
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
@@ -151,10 +167,6 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
-let g:livepreview_previewer = 'mupdf'
-
-
-
 
 "Nerd Commenter
 "Add spaces after comment delimiters by default
@@ -181,5 +193,36 @@ let g:NERDTrimTrailingWhitespace = 1
 let mapleader=","
 set timeout timeoutlen=1500
 autocmd Filetype tex setl updatetime=1
+" let g:livepreview_previewer = 'mupdf'
 
+vnoremap < <gv
+vnoremap > >gv
+
+highlight link SyntasticError black
+highlight link SyntasticWarning black
+
+" s: Find this C symbol
+nnoremap  <leader>fs :call cscope#find('s', expand('<cword>'))<CR>
+" g: Find this definition
+nnoremap  <leader>fg :call cscope#find('g', expand('<cword>'))<CR>
+" d: Find functions called by this function
+nnoremap  <leader>fd :call cscope#find('d', expand('<cword>'))<CR>
+" c: Find functions calling this function
+nnoremap  <leader>fc :call cscope#find('c', expand('<cword>'))<CR>
+" t: Find this text string
+nnoremap  <leader>ft :call cscope#find('t', expand('<cword>'))<CR>
+" e: Find this egrep pattern
+nnoremap  <leader>fe :call cscope#find('e', expand('<cword>'))<CR>
+" f: Find this file
+nnoremap  <leader>ff :call cscope#find('f', expand('<cword>'))<CR>
+" i: Find files #including this file
+nnoremap  <leader>fi :call cscope#find('i', expand('<cword>'))<CR>
+let g:ycm_error_symbol = '>>'
+let g:ycm_warning_symbol = '#>'
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_confirm_extra_conf = 0
+let g:ycm_min_num_of_chars_for_completion = 0
+
+" autocmd FileType c ClangFormatAutoEnable
+" autocmd FileType cpp ClangFormatAutoEnable
 

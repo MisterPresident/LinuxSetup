@@ -97,3 +97,4 @@ autoload -U history-search-end
 source $ZSH/zsh-history-substring-search.zsh
 bindkey "^[[A" history-substring-search-up
 bindkey "^[[B" history-substring-search-down
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"

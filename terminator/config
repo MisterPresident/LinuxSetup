@@ -16,6 +16,8 @@
 [profiles]
   [[default]]
     cursor_color = "#aaaaaa"
+    scrollback_infinite = True
+    scrollback_lines = 20000
+    scrollbar_position = hidden
     show_titlebar = False
     use_system_font = False
-    scrollback_lines = 20000

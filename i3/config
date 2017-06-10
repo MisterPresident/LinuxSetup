@@ -23,6 +23,7 @@ set $w10 10 
 
 assign [class="Google-chrome"] $w2
 assign [class="qpdfview"] $w5
+assign [class="epdfview"] $w5
 assign [class="Spacefm"] $w6
 assign [class="GitKraken"] $w7
 for_window [class="Skype"] move to workspace  $w8
