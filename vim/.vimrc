@@ -134,6 +134,7 @@ Plugin 'vim-latex/vim-latex'
 Plugin 'xuhdev/vim-latex-live-preview'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'vim-scripts/cscope.vim'
+Plugin 'powerman/vim-plugin-AnsiEsc'
 "
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.

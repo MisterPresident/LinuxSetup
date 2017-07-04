@@ -74,6 +74,9 @@ elsif ( $status eq 'Unknown' ) {
         }
     }
 }
+elsif ( $status eq 'Full' ) {
+    $full_text .= ' ';
+}
 
 $full_text .= "$percent%";
 $short_text = $full_text;

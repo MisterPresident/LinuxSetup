@@ -53,7 +53,7 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git vi-mode zsh-syntax-highlighting)
+plugins=(git vi-mode zsh-syntax-highlighting history-substring-search)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -89,12 +89,19 @@ source $ZSH/oh-my-zsh.sh
 #
 
 # export TERM='xterm-256color' 
+
 zstyle ':completion:*' rehash true
+
 export EDITOR="vim"
 export VISUAL="vim"
-bindkey '^[[Z' reverse-menu-complete
+
 autoload -U history-search-end
-source $ZSH/zsh-history-substring-search.zsh
+
+bindkey '^[[Z' reverse-menu-complete
 bindkey "^[[A" history-substring-search-up
 bindkey "^[[B" history-substring-search-down
+
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
+
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"

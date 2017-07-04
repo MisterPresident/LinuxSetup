@@ -203,8 +203,12 @@ client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 client.background       #ffffff
 
 
+#i3-gaps
+gaps inner 10
+smart_gaps on
+for_window [class="^.*"] border pixel 0
+
 #bindsym $mod+Shift+b exec i3lock -i ~/.config/i3/lock_screen.png
-bindsym $mod+Shift+b exec "i3lock -c 000000 && xset dpms force off"
 
 bindsym XF86MonBrightnessUp exec "xbacklight +10"
 bindsym XF86MonBrightnessDown exec "xbacklight -10"
@@ -217,3 +221,4 @@ exec "feh --bg-scale /home/raabls/Wallpaper/brazil_boottour.jpg"
 bindsym Control+Shift+Right exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
 bindsym Control+Shift+Left exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
 bindsym Control+Shift+Up exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
+bindsym Control+Shift+L exec "i3lock.sh && xset dpms force off"

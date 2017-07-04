@@ -4,6 +4,8 @@
   broadcast_group = <Alt>a
   help = <Primary>F1
   layout_launcher = <Alt>a
+  page_down = Page_Down
+  page_up = Page_Up
 [layouts]
   [[default]]
     [[[child1]]]
