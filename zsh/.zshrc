@@ -1,3 +1,5 @@
+export EDITOR="vim"
+export VISUAL="vim"
 archey3
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -92,8 +94,6 @@ source $ZSH/oh-my-zsh.sh
 
 zstyle ':completion:*' rehash true
 
-export EDITOR="vim"
-export VISUAL="vim"
 
 autoload -U history-search-end
 

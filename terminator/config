@@ -1,9 +1,12 @@
 [global_config]
+  inactive_color_offset = 0.901960784314
   suppress_multiple_term_dialog = True
 [keybindings]
   broadcast_group = <Alt>a
+  close_term = <Primary>w
   help = <Primary>F1
   layout_launcher = <Alt>a
+  new_tab = <Primary>t
   page_down = Page_Down
   page_up = Page_Up
 [layouts]
@@ -17,7 +20,10 @@
 [plugins]
 [profiles]
   [[default]]
+    background_darkness = 0.8
+    background_type = transparent
     cursor_color = "#aaaaaa"
+    font = Noto Mono 10
     scrollback_infinite = True
     scrollback_lines = 20000
     scrollbar_position = hidden

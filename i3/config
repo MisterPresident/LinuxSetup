@@ -26,6 +26,7 @@ assign [class="qpdfview"] $w5
 assign [class="epdfview"] $w5
 assign [class="Spacefm"] $w6
 assign [class="GitKraken"] $w7
+assign [class="quassel"] $w8
 for_window [class="Skype"] move to workspace  $w8
 assign [class="Thunderbird"] $w9
 for_window [class="Spotify"] move to workspace  $w10
@@ -147,6 +148,8 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+bindsym $mod+o move workspace to output left
 
 # resize window (you can also use the mouse for that)
 mode "resize" {

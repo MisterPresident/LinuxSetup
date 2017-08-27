@@ -1,9 +1,17 @@
 syntax on
+filetype plugin indent on
+
 set number
 set relativenumber
 set smartcase
 set hlsearch
 set incsearch
+set tabstop=2
+set shiftwidth=2
+set expandtab
+
+set ignorecase
+set smartcase
 
 set tags=./tags,tags;$HOME
 
@@ -18,6 +26,7 @@ set timeout ttimeoutlen=50
 set mouse=a
 set lazyredraw
 set ttyfast
+set cursorline
 
 " go between wrapped lines
 nnoremap k gk
@@ -29,30 +38,30 @@ noremap <Down> <NOP>
 noremap <Right> <NOP>
 noremap <Left> <NOP>
 
+vnoremap < <gv
+vnoremap > >gv
+
 nmap <silent> <A-k> :wincmd k<CR>
 nmap <silent> <A-j> :wincmd j<CR>
 nmap <silent> <A-h> :wincmd h<CR>
 nmap <silent> <A-l> :wincmd l<CR>
 nmap <silent> <C-b> :vsplit <CR>
-let g:autoformat_verbosemode = 1
-map <f12> <C-]>
+
 noremap gt :YcmCompleter GoTo<CR>
 noremap gd :YcmCompleter GoToDefinition<CR>
 " noremap <g-r> :YcmCompleter GoToReferences<CR>
 
 map <C-n> :NERDTreeToggle<CR>
+noremap <F3> :Autoformat<CR>
+nmap <F8> :TagbarToggle<CR>
 map <F9> :YcmCompleter FixIt<CR>
+map <F12> <C-]>
 
 set t_Co=256
+let mapleader=","
 colorscheme monokai
 
 execute pathogen#infect()
-syntax on
-filetype plugin indent on
-set tabstop=2
-set shiftwidth=2
-set expandtab
-
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 set statusline+=%#warningmsg#
@@ -61,8 +70,6 @@ set statusline+=%*
 
 set laststatus=2
 
-set ignorecase
-set smartcase
 
 
 " ---------------------------------- "
@@ -93,7 +100,6 @@ let g:ycm_server_python_interpreter = 'python2'
 let g:airline_powerline_fonts = 1
 let g:ycm_global_ycm_extra_conf = "~/.ycm_extra_conf.py"
 
-noremap <F3> :Autoformat<CR>
 let g:autoformat_autoindent = 0
 let g:autoformat_retab = 0
 let g:autoformat_remove_trailing_spaces = 0
@@ -110,6 +116,7 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
+Plugin 'majutsushi/tagbar'
 Plugin 'ervandew/supertab'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/nerdtree'
@@ -191,13 +198,10 @@ let g:NERDCommentEmptyLines = 1
 " Enable trimming of trailing whitespace when uncommenting
 let g:NERDTrimTrailingWhitespace = 1
 
-let mapleader=","
 set timeout timeoutlen=1500
 autocmd Filetype tex setl updatetime=1
 " let g:livepreview_previewer = 'mupdf'
 
-vnoremap < <gv
-vnoremap > >gv
 
 highlight link SyntasticError black
 highlight link SyntasticWarning black
@@ -218,6 +222,7 @@ nnoremap  <leader>fe :call cscope#find('e', expand('<cword>'))<CR>
 nnoremap  <leader>ff :call cscope#find('f', expand('<cword>'))<CR>
 " i: Find files #including this file
 nnoremap  <leader>fi :call cscope#find('i', expand('<cword>'))<CR>
+
 let g:ycm_error_symbol = '>>'
 let g:ycm_warning_symbol = '#>'
 let g:ycm_autoclose_preview_window_after_insertion = 1
@@ -226,4 +231,3 @@ let g:ycm_min_num_of_chars_for_completion = 0
 
 " autocmd FileType c ClangFormatAutoEnable
 " autocmd FileType cpp ClangFormatAutoEnable
-
