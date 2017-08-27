@@ -61,15 +61,12 @@ set t_Co=256
 let mapleader=","
 colorscheme monokai
 
-execute pathogen#infect()
-set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 set laststatus=2
-
 
 
 " ---------------------------------- "
@@ -140,7 +137,8 @@ Plugin 'Chiel92/vim-autoformat'
 Plugin 'vim-latex/vim-latex'
 Plugin 'xuhdev/vim-latex-live-preview'
 Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'vim-scripts/cscope.vim'
+" Plugin 'vim-scripts/cscope.vim'
+Plugin 'joe-skb7/cscope-maps'
 Plugin 'powerman/vim-plugin-AnsiEsc'
 "
 " The following are examples of different formats supported.
@@ -190,7 +188,7 @@ let g:NERDDefaultAlign = 'left'
 let g:NERDAltDelims_java = 1
 
 " Add your own custom formats or override the defaults
-" let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+let g:NERDCustomDelimiters = { 'c': { 'left': '//'} }
 
 " Allow commenting and inverting empty lines (useful when commenting a region)
 let g:NERDCommentEmptyLines = 1
@@ -206,23 +204,6 @@ autocmd Filetype tex setl updatetime=1
 highlight link SyntasticError black
 highlight link SyntasticWarning black
 
-" s: Find this C symbol
-nnoremap  <leader>fs :call cscope#find('s', expand('<cword>'))<CR>
-" g: Find this definition
-nnoremap  <leader>fg :call cscope#find('g', expand('<cword>'))<CR>
-" d: Find functions called by this function
-nnoremap  <leader>fd :call cscope#find('d', expand('<cword>'))<CR>
-" c: Find functions calling this function
-nnoremap  <leader>fc :call cscope#find('c', expand('<cword>'))<CR>
-" t: Find this text string
-nnoremap  <leader>ft :call cscope#find('t', expand('<cword>'))<CR>
-" e: Find this egrep pattern
-nnoremap  <leader>fe :call cscope#find('e', expand('<cword>'))<CR>
-" f: Find this file
-nnoremap  <leader>ff :call cscope#find('f', expand('<cword>'))<CR>
-" i: Find files #including this file
-nnoremap  <leader>fi :call cscope#find('i', expand('<cword>'))<CR>
-
 let g:ycm_error_symbol = '>>'
 let g:ycm_warning_symbol = '#>'
 let g:ycm_autoclose_preview_window_after_insertion = 1
@@ -231,3 +212,7 @@ let g:ycm_min_num_of_chars_for_completion = 0
 
 " autocmd FileType c ClangFormatAutoEnable
 " autocmd FileType cpp ClangFormatAutoEnable
+" 
+nmap <leader>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <leader>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <leader>d :cs find c <C-R>=expand("<cword>")<CR><CR>
