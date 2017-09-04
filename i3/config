@@ -115,8 +115,8 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
-bindsym $mod+m workspace next
-bindsym $mod+n workspace prev
+bindsym $mod+m workspace next_on_output
+bindsym $mod+n workspace prev_on_output
 
 # switch to workspace
 bindsym $mod+1 workspace $w1

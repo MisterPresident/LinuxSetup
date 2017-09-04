@@ -86,7 +86,7 @@ let g:ycm_use_ultisnips_completer = 1 " Default 1, just ensure
 let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
 let g:ycm_complete_in_comments = 1 " Completion in comments
 let g:ycm_complete_in_strings = 1 " Completion in string
-let g:ycm_collect_identifiers_from_tags_files = 1 
+let g:ycm_collect_identifiers_from_tags_files = 1
 
 " make YCM compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
@@ -95,6 +95,8 @@ let g:SuperTabDefaultCompletionType = '<C-n>'
 
 let g:ycm_server_python_interpreter = 'python2'
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:ycm_global_ycm_extra_conf = "~/.ycm_extra_conf.py"
 
 let g:autoformat_autoindent = 0
@@ -212,7 +214,7 @@ let g:ycm_min_num_of_chars_for_completion = 0
 
 " autocmd FileType c ClangFormatAutoEnable
 " autocmd FileType cpp ClangFormatAutoEnable
-" 
+"
 nmap <leader>s :cs find s <C-R>=expand("<cword>")<CR><CR>
 nmap <leader>g :cs find g <C-R>=expand("<cword>")<CR><CR>
 nmap <leader>d :cs find c <C-R>=expand("<cword>")<CR><CR>
