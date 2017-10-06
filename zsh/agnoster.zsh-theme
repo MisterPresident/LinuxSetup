@@ -226,9 +226,11 @@ build_prompt() {
   prompt_virtualenv
   prompt_context
   prompt_dir
-  prompt_git
+  if [[ "$(command git config --get oh-my-zsh.hide-status 2>/dev/null)" != "1" ]];then
+    prompt_git
+    prompt_hg
+  fi 
   prompt_bzr
-  prompt_hg
   prompt_end
 }
 

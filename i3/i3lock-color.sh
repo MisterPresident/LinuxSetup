@@ -35,4 +35,5 @@ i3lock              \
 --timestr="%H:%M:%S"  \
 --datestr="%A, %m %Y" \
 --blur 5              \
+--show-circle         \
 

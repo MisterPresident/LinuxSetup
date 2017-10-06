@@ -55,6 +55,10 @@ map <C-n> :NERDTreeToggle<CR>
 noremap <F3> :Autoformat<CR>
 nmap <F8> :TagbarToggle<CR>
 map <F9> :YcmCompleter FixIt<CR>
+
+nmap <C-k> :!find . -iname '*.c' -o -iname '*.cpp' -o -iname '*.h' -o -iname '*.hpp' > cscope.files;
+      \cscope -b -i cscope.files -f cscope.out<CR>
+      \:cs kill -1<CR>:cs add cscope.out<CR>"
 map <F12> <C-]>
 
 set t_Co=256
@@ -81,12 +85,11 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 " Configure YouCompleteMe
 " ---------------------------------- "
 
-" let g:ycm_collect_identifiers_from_tags_files = 1 " Let YCM read tags from Ctags file
+let g:ycm_collect_identifiers_from_tags_files = 0 " Let YCM read tags from Ctags file
 let g:ycm_use_ultisnips_completer = 1 " Default 1, just ensure
 let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
 let g:ycm_complete_in_comments = 1 " Completion in comments
 let g:ycm_complete_in_strings = 1 " Completion in string
-let g:ycm_collect_identifiers_from_tags_files = 1
 
 " make YCM compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
@@ -127,6 +130,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'vim-scripts/SearchComplete'
+Plugin 'alvan/vim-closetag'
 Plugin 'xolox/vim-easytags'
 Plugin 'xolox/vim-misc'
 Plugin 'airblade/vim-gitgutter'
@@ -139,7 +143,7 @@ Plugin 'Chiel92/vim-autoformat'
 Plugin 'vim-latex/vim-latex'
 Plugin 'xuhdev/vim-latex-live-preview'
 Plugin 'ctrlpvim/ctrlp.vim'
-" Plugin 'vim-scripts/cscope.vim'
+Plugin 'vim-scripts/cscope.vim'
 Plugin 'joe-skb7/cscope-maps'
 Plugin 'powerman/vim-plugin-AnsiEsc'
 "
@@ -211,6 +215,10 @@ let g:ycm_warning_symbol = '#>'
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_min_num_of_chars_for_completion = 0
+
+let g:easytags_async=1
+let g:easytags_auto_highlight=0
+
 
 " autocmd FileType c ClangFormatAutoEnable
 " autocmd FileType cpp ClangFormatAutoEnable

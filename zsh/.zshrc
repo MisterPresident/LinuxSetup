@@ -89,6 +89,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
 #
+alias meld="GTK_THEME=adwaita meld"
 
 # export TERM='xterm-256color' 
 

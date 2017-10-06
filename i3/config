@@ -219,9 +219,21 @@ bindsym XF86AudioRaiseVolume exec "amixer -M set Master 5%+"
 bindsym XF86AudioLowerVolume exec "amixer -M set Master 5%-"
 bindsym XF86AudioMute exec "/bin/unmute"
 
-exec "feh --bg-scale /home/raabls/Wallpaper/brazil_boottour.jpg"
+exec "feh --bg-scale /home/raabls/Wallpaper/active.jpg"
+exec "dex -ae i3"
 
-bindsym Control+Shift+Right exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
-bindsym Control+Shift+Left exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
-bindsym Control+Shift+Up exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
+set $spotify_next exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
+set $spotify_previous exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
+set $spotify_playpause exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
+
+bindsym Control+Shift+Right $spotify_next
+bindsym XF86AudioNext $spotify_next
+bindsym Control+Shift+Left $spotify_previous
+bindsym XF86AudioPrev $spotify_previous
+bindsym Control+Shift+Up $spotify_playpauss
+bindsym XF86AudioPlay $spotify_playpause
 bindsym Control+Shift+L exec "i3lock.sh && xset dpms force off"
+
+bindsym XF86Search exec google-chrome-stable
+bindsym XF86HomePage exec spacefm
+bindsym XF86Mail exec thunderbird
