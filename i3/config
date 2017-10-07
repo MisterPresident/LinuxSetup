@@ -227,8 +227,9 @@ bindsym Control+Shift+Right $spotify_next
 bindsym XF86AudioNext $spotify_next
 bindsym Control+Shift+Left $spotify_previous
 bindsym XF86AudioPrev $spotify_previous
-bindsym Control+Shift+Up $spotify_playpauss
+bindsym Control+Shift+Up $spotify_playpause
 bindsym XF86AudioPlay $spotify_playpause
+
 bindsym Control+Shift+L exec "i3lock.sh && xset dpms force off"
 
 bindsym XF86Search exec google-chrome-stable
