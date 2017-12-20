@@ -4,10 +4,12 @@ if [ -n "$DISPLAY" ]; then
 else
     export BROWSER=links
 fi
+
+xrdb ~/.Xdefaults
 /home/raabls/.screenlayout/screenlayout.sh
 /home/raabls/Software/fusuma/exe/fusuma -c /home/raabls/.config/fusuma/fusuma.yml &
 xautolock -time 6 -locker 'i3lock.sh' &
 /home/raabls/Software/lightsOn/lightsOn.sh &
-compton &
+compton -cCG -b --vsync opengl
 xflux -l 48.5724264 -g 13.989240900000027 &
-exec i3 
+exec i3

@@ -1,0 +1,1 @@
+/home/raabls/.config/fish/functions/fish_prompt.fish

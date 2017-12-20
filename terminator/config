@@ -7,6 +7,7 @@
   help = <Primary>F1
   layout_launcher = <Alt>a
   new_tab = <Primary>t
+  next_profile = <Primary>numbersign
   page_down = Page_Down
   page_up = Page_Up
 [layouts]
@@ -27,5 +28,12 @@
     scrollback_infinite = True
     scrollback_lines = 20000
     scrollbar_position = hidden
+    show_titlebar = False
+    use_system_font = False
+  [[Presentation]]
+    cursor_color = "#ffffff"
+    cursor_color_fg = False
+    font = Mono 20
+    scrollback_infinite = True
     show_titlebar = False
     use_system_font = False

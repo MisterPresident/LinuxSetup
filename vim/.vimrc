@@ -28,9 +28,13 @@ set lazyredraw
 set ttyfast
 set cursorline
 
+
 " go between wrapped lines
 nnoremap k gk
 nnoremap j gj
+
+cmap w!! w !sudo tee > /dev/null %
+set nocompatible              
 
 
 noremap <Up> <NOP>
@@ -50,15 +54,17 @@ nmap <silent> <C-b> :vsplit <CR>
 noremap gt :YcmCompleter GoTo<CR>
 noremap gd :YcmCompleter GoToDefinition<CR>
 " noremap <g-r> :YcmCompleter GoToReferences<CR>
-
 map <C-n> :NERDTreeToggle<CR>
-noremap <F3> :Autoformat<CR>
-nmap <F8> :TagbarToggle<CR>
-map <F9> :YcmCompleter FixIt<CR>
 
-nmap <C-k> :!find . -iname '*.c' -o -iname '*.cpp' -o -iname '*.h' -o -iname '*.hpp' > cscope.files;
+noremap <F3> :Autoformat<CR>
+
+nmap <F4> :!make<CR>"
+
+nmap <F6> :!find . -iname '*.c' -o -iname '*.cpp' -o -iname '*.h' -o -iname '*.hpp' > cscope.files;
       \cscope -b -i cscope.files -f cscope.out<CR>
       \:cs kill -1<CR>:cs add cscope.out<CR>"
+nmap <F8> :TagbarToggle<CR>
+map <F9> :YcmCompleter FixIt<CR>
 map <F12> <C-]>
 
 set t_Co=256
@@ -76,56 +82,49 @@ set laststatus=2
 " ---------------------------------- "
 " Configure Ultisnip and YouCompleteMe
 " ---------------------------------- "
-
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsExpandTrigger="<c-l>"
+let g:UltiSnipsJumpForwardTrigger="<c-k>"
+let g:UltiSnipsJumpBackwardTrigger="<c-j>"
 
 " ---------------------------------- "
 " Configure YouCompleteMe
 " ---------------------------------- "
-
 let g:ycm_collect_identifiers_from_tags_files = 0 " Let YCM read tags from Ctags file
 let g:ycm_use_ultisnips_completer = 1 " Default 1, just ensure
 let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
 let g:ycm_complete_in_comments = 1 " Completion in comments
 let g:ycm_complete_in_strings = 1 " Completion in string
-
-" make YCM compatible with UltiSnips (using supertab)
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-let g:SuperTabDefaultCompletionType = '<C-n>'
-
 let g:ycm_server_python_interpreter = 'python2'
+let g:ycm_global_ycm_extra_conf = "~/.ycm_extra_conf.py"
+let g:ycm_error_symbol = '>>'
+let g:ycm_warning_symbol = '#>'
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_confirm_extra_conf = 0
+let g:ycm_min_num_of_chars_for_completion = 0
+
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
-let g:ycm_global_ycm_extra_conf = "~/.ycm_extra_conf.py"
 
 let g:autoformat_autoindent = 0
 let g:autoformat_retab = 0
 let g:autoformat_remove_trailing_spaces = 0
 
-cmap w!! w !sudo tee > /dev/null %
-set nocompatible              " be iMproved, required
-filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'majutsushi/tagbar'
-Plugin 'ervandew/supertab'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/nerdtree'
 Plugin 'vim-airline/vim-airline'
 Plugin 'wincent/command-t'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'bling/vim-bufferline'
+Plugin 'ervandew/supertab'
 Plugin 'tpope/vim-surround'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'scrooloose/nerdcommenter'
@@ -140,12 +139,13 @@ Plugin 'sheerun/vim-polyglot'
 Plugin 'honza/vim-snippets'
 Plugin 'rdnetto/YCM-Generator'
 Plugin 'Chiel92/vim-autoformat'
-Plugin 'vim-latex/vim-latex'
+" Plugin 'vim-latex/vim-latex'
 Plugin 'xuhdev/vim-latex-live-preview'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'vim-scripts/cscope.vim'
 Plugin 'joe-skb7/cscope-maps'
 Plugin 'powerman/vim-plugin-AnsiEsc'
+Plugin 'udalov/kotlin-vim'
 "
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
@@ -210,11 +210,6 @@ autocmd Filetype tex setl updatetime=1
 highlight link SyntasticError black
 highlight link SyntasticWarning black
 
-let g:ycm_error_symbol = '>>'
-let g:ycm_warning_symbol = '#>'
-let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_confirm_extra_conf = 0
-let g:ycm_min_num_of_chars_for_completion = 0
 
 let g:easytags_async=1
 let g:easytags_auto_highlight=0
@@ -226,3 +221,6 @@ let g:easytags_auto_highlight=0
 nmap <leader>s :cs find s <C-R>=expand("<cword>")<CR><CR>
 nmap <leader>g :cs find g <C-R>=expand("<cword>")<CR><CR>
 nmap <leader>d :cs find c <C-R>=expand("<cword>")<CR><CR>
+
+setlocal spell spelllang=en
+hi SpellBad cterm=underline
