@@ -13,6 +13,10 @@ set expandtab
 set ignorecase
 set smartcase
 
+if &shell =~# 'fish$'
+    set shell=sh
+endif
+
 set tags=./tags,tags;$HOME
 
 let c='a'
@@ -139,6 +143,7 @@ Plugin 'sheerun/vim-polyglot'
 Plugin 'honza/vim-snippets'
 Plugin 'rdnetto/YCM-Generator'
 Plugin 'Chiel92/vim-autoformat'
+Plugin 'dag/vim-fish'
 " Plugin 'vim-latex/vim-latex'
 Plugin 'xuhdev/vim-latex-live-preview'
 Plugin 'ctrlpvim/ctrlp.vim'
