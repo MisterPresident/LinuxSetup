@@ -1,0 +1,13 @@
+#!/bin/bash
+OUT=$(stock)
+ABSOLUTE=$(echo "$OUT" | tail -n 1 | grep -Po "(\-|\+)\d+\.\d+€")
+PERCENT=$(echo "$OUT" | tail -n 2 | head -n 1 | grep -Po "(\-|\+)\d+\.\d+%")
+echo "$ABSOLUTE ($PERCENT)"
+echo "$ABSOLUTE"
+echo "$PERCENT" | grep -q "+"
+if [ $? -eq 0 ]; then
+  echo "#00ff00"
+else
+  echo "#ff0000"
+fi
+

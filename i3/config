@@ -196,6 +196,23 @@ bar {
         binding_mode       #2f343a #900000 #ffffff
    }
 }
+bar {
+ 	font pango:Source Sans Pro-10 10
+	status_command i3blocks -c ~/.i3/i3blocks_top.conf
+  workspace_buttons no
+  position top
+  colors {
+        background #000000
+        statusline #ffffff
+        separator #666666
+
+        focused_workspace  #4c7899 #285577 #ffffff
+        active_workspace   #333333 #5f676a #ffffff
+        inactive_workspace #333333 #222222 #888888
+        urgent_workspace   #2f343a #900000 #ffffff
+        binding_mode       #2f343a #900000 #ffffff
+   }
+}
 client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
 client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
 client.unfocused        #333333 #222222 #888888 #292d2e   #222222
