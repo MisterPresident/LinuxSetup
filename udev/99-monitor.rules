@@ -1,1 +1,1 @@
-ACTION=="change", SUBSYSTEM=="drm", ENV{HOTPLUG}=="1", RUN+="/bin/bash /home/raabls/.screenlayout/screenlayout.sh udev"
+ACTION=="change", KERNEL=="card0", SUBSYSTEM=="drm", RUN+="/bin/bash /home/raabls/.screenlayout/screenlayout.sh udev"
