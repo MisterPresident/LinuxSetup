@@ -11,6 +11,7 @@ autoconf
 automake
 autopep8
 bind-tools
+bison
 blueman
 bluez-tools
 bluez-utils
@@ -32,6 +33,7 @@ evince
 fakeroot
 fish
 flake8
+flex
 freefilesync
 ghex
 gimp
@@ -49,6 +51,7 @@ inkscape
 intel-ucode
 intellij-idea-ultimate-edition
 iputils
+iw
 jabref-git
 jfsutils
 john
@@ -76,6 +79,7 @@ mirage
 moreutils
 multipath-tools
 mysql-workbench
+nasm
 netctl
 nload
 nmap
